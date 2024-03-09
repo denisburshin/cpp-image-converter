@@ -63,8 +63,8 @@ namespace img_lib {
         info_header.height = height;
         info_header.bytes_at_data = height * bmp_stride;
 
-        out.write(reinterpret_cast<const char*>(&file_header), 14);
-        out.write(reinterpret_cast<const char*>(&info_header), 40);
+        out.write(reinterpret_cast<const char*>(&file_header), sizeof(BitmapFileHeader));
+        out.write(reinterpret_cast<const char*>(&info_header), sizeof(BitmapInfoHeader));
 
         std::vector<char> buff(bmp_stride);
 
